@@ -1,4 +1,4 @@
-import { Model, DataTypes } from '../deps/denodb.ts';
+import { Model, DataTypes, Values } from '../deps/denodb.ts';
 
 export class DinosaurModel extends Model {
   static table = 'dinosaurs';
@@ -6,10 +6,16 @@ export class DinosaurModel extends Model {
 
   static fields = {
     id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     name: DataTypes.STRING,
-    period: DataTypes.STRING,
+    period: DataTypes.STRING
   };
+}
+
+export interface DinosuarDTO extends Values {
+  name: string;
+  period: string;
 }
