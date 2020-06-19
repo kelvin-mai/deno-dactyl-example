@@ -1,9 +1,10 @@
-import { Controller, Get } from "https://deno.land/x/dactyl/mod.ts";
+import { Controller, Get } from '../deps/dactyl.ts';
+import { DinosaurModel } from '../models/dinosaur.model.ts';
 
-@Controller("/api/dinosaur")
+@Controller('/api/dinosaur')
 export class DinosaurController {
-  @Get("/")
-  getAllDinosaurs() {
-    return { hello: "world" };
+  @Get('/')
+  async getAllDinosaurs() {
+    return await DinosaurModel.select().all();
   }
 }
